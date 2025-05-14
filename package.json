@@ -31,8 +31,8 @@
     "validate:dependencies": "yarn audit --groups dependencies && yarn license-validate",
     "license-validate": "node-license-validator -p -d --allow-licenses MIT BSD BSD-2-Clause BSD-3-Clause 0BSD ISC Apache Unlicense WTFPL GPL GPL-2.0-or-later --allow-packages cycle",
     "watch-server": "nodemon --watch src -e ts,tsx --exec ts-node ./src/server.ts",
-    "server": "ts-node ./src/server.ts",
-    "start": "node ./dist/server.js"
+    "server": "NODE_OPTIONS='--report-uncaught-exception --report-on-fatalerror --report-on-signal --report-signal=SIGUSR2' ts-node ./src/server.ts",
+    "start": "NODE_OPTIONS='--report-uncaught-exception --report-on-fatalerror --report-on-signal --report-signal=SIGUSR2' node ./dist/server.js"
   },
   "repository": {
     "type": "git",
