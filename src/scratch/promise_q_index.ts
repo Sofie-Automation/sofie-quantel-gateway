@@ -23,9 +23,6 @@ import request from 'request-promise-native'
 
 const quantel = require('../build/Release/quantel_gateway')
 
-import SegfaultHandler from 'segfault-handler'
-SegfaultHandler.registerHandler('crash.log')
-
 export namespace Quantel {
 
 	let isaIOR: Promise<string> | null = null

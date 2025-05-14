@@ -21,11 +21,6 @@
 
 const quantel = require('../../build/Release/quantel_gateway')
 
-// const SegfaultHandler = require('segfault-handler')
-// SegfaultHandler.registerHandler('crash2.log')
-
-
-
 // process.on('SIGHUP', () => {
 // 	quantel.closeServer()
 // 	console.log("Close server called.")
