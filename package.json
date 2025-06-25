@@ -85,7 +85,7 @@
     "watch-server": "Run HTTP server and restart when changes are made."
   },
   "engines": {
-    "node": ">=18.12.00"
+    "node": ">=18.12.00 <22.0.0"
   },
   "devDependencies": {
     "@types/jest": "^29.2.5",
@@ -116,7 +116,7 @@
   },
   "dependencies": {
     "bindings": "^1.5.0",
-    "koa": "^2.13.1",
+    "koa": "^2.16.1",
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^8.0.0",
     "p-queue": "^6.6.2",
