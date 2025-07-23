@@ -1,11 +1,11 @@
 # syntax=docker/dockerfile:experimental
 # BUILD IMAGE
-FROM node:18
+FROM node:18 as build
 
 RUN apt-get update && apt-get install -y \
-    build-essential \
-    g++ \
-    libomniorb4-dev
+  build-essential \
+  g++ \
+  libomniorb4-dev
 
 WORKDIR /opt/quantel-gateway
 COPY . .
@@ -17,11 +17,15 @@ RUN yarn install --check-files --frozen-lockfile --production --force # purge de
 FROM node:18-slim
 
 RUN apt-get update && apt-get install -y \
-    libomniorb4-2 curl \
-    && rm -rf /var/lib/apt/lists/*
+  libomniorb4-2 curl dumb-init \
+  && rm -rf /var/lib/apt/lists/*
 
-COPY --from=0 /opt/quantel-gateway /opt/quantel-gateway
+COPY --from=build /opt/quantel-gateway /opt/quantel-gateway
+
+
+# Run as non-root user
+USER 1000
 WORKDIR /opt/quantel-gateway
-
 EXPOSE 3000
+ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 CMD ["yarn", "start"]
