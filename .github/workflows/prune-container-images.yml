@@ -7,7 +7,7 @@ on:
 
 jobs:
   prune-container-images:
-    uses: nrkno/sofie-github-workflows/.github/workflows/prune-container-images.yml@main
+    uses: sofie-automation/sofie-github-workflows/.github/workflows/prune-container-images.yml@main
     with:
       dry-run: false
       prune-untagged: true
